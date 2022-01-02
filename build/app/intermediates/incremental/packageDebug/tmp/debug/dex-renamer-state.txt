@@ -1,4 +1,4 @@
-#Mon Dec 27 22:01:49 BRT 2021
+#Sun Jan 02 18:11:37 BRT 2022
 base.0=/home/wallece/Área de Trabalho/Projetos Flutter/gow_memory_game/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
