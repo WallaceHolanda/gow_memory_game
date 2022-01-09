@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gow_memory_game/theme.dart';
 import 'package:gow_memory_game/widgets/logo.dart';
+import 'package:gow_memory_game/widgets/recordes.dart';
 import 'package:gow_memory_game/widgets/start_button.dart';
 
 class HomePage extends StatelessWidget {
@@ -26,6 +27,8 @@ class HomePage extends StatelessWidget {
               color: GodOfWarTheme.color.shade900,
               action: () {},
             ),
+            const SizedBox(height: 60),
+            const Recordes(),
           ],
         ),
       ),
