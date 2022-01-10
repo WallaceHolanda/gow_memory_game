@@ -43,12 +43,16 @@ class _RecordesState extends State<Recordes> {
             ListTile(
               title: const Text('Modo Mortal'),
               trailing: const Icon(Icons.chevron_right),
-              onTap: () {}, //showRecordes(Modo.mortal),
+              onTap: () {
+                showRecordes(Modo.mortal);
+              },
             ),
             ListTile(
               title: const Text('Modo God of War'),
               trailing: const Icon(Icons.chevron_right),
-              onTap: () {}, //showRecordes(Modo.godOfWar),
+              onTap: () {
+                showRecordes(Modo.godOfWar);
+              }, //,
             ),
           ],
         ),
