@@ -48,3 +48,7 @@ flutter:
 
   assets:
     - images/logo.png
+    - images/cardGow.png
+    - images/cardMortal.png
+    - images/aprovado.png
+    - images/eliminado.png

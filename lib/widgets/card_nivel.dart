@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gow_memory_game/pages/game_page.dart';
 import 'package:gow_memory_game/theme.dart';
 import '../constantes.dart';
 
@@ -12,7 +13,15 @@ class CardNivel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => {},
+      onTap: () => {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              fullscreenDialog: true,
+              builder: (BuildContext context) =>
+                  GamePage(modo: modo, nivel: nivel),
+            )),
+      },
       borderRadius: const BorderRadius.all(Radius.circular(10)),
       child: Container(
         width: 90,

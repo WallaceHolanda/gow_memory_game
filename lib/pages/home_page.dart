@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gow_memory_game/constantes.dart';
+import 'package:gow_memory_game/pages/nivel_page.dart';
 import 'package:gow_memory_game/theme.dart';
 import 'package:gow_memory_game/widgets/logo.dart';
 import 'package:gow_memory_game/widgets/recordes.dart';
@@ -20,12 +22,28 @@ class HomePage extends StatelessWidget {
             StartButton(
               title: 'Modo Mortal',
               color: Colors.white,
-              action: () {},
+              action: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        const NivelPage(modo: Modo.mortal),
+                  ),
+                );
+              },
             ),
             StartButton(
               title: 'Modo God of War',
               color: GodOfWarTheme.color.shade900,
-              action: () {},
+              action: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        const NivelPage(modo: Modo.godOfWar),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 60),
             const Recordes(),
