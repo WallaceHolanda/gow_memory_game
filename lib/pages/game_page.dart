@@ -57,8 +57,8 @@ class GamePage extends StatelessWidget {
           ],
         ),
       ),
-      body: const FeedbackGame(resultado: Resultado.eliminado),
-      /*body: Center(
+      //body: const FeedbackGame(resultado: Resultado.eliminado),
+      body: Center(
         child: GridView.count(
           shrinkWrap: true,
           crossAxisCount: getAxisCount(),
@@ -73,7 +73,7 @@ class GamePage extends StatelessWidget {
             ),
           ),
         ),
-      ),*/
+      ),
     );
   }
 }
