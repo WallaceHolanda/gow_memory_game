@@ -1,29 +1,17 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:gow_memory_game/game_settings.dart';
+import 'package:gow_memory_game/models/game_play.dart';
 import 'package:gow_memory_game/widgets/card_game.dart';
-import 'package:gow_memory_game/widgets/feedback_game.dart';
-import '../constantes.dart';
+import 'package:gow_memory_game/widgets/game_score.dart';
 
 class GamePage extends StatelessWidget {
-  final Modo modo;
-  final int nivel;
+  final GamePlay gamePlay;
 
   const GamePage({
     Key? key,
-    required this.modo,
-    required this.nivel,
+    required this.gamePlay,
   }) : super(key: key);
-
-  getAxisCount() {
-    if (nivel < 10) {
-      return 2;
-    } else if (nivel == 10 || nivel == 12 || nivel == 18) {
-      return 3;
-    } else {
-      return 4;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,44 +19,20 @@ class GamePage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(modo == Modo.godOfWar
-                    ? Icons.my_location
-                    : Icons.touch_app_rounded),
-                const SizedBox(width: 10),
-                const Text('18', style: TextStyle(fontSize: 25)),
-              ],
-            ),
-            Image.asset('images/logo.png', width: 60, height: 45),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Sair',
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              ),
-            ),
-          ],
-        ),
+        title: GameScore(modo: gamePlay.modo),
       ),
       //body: const FeedbackGame(resultado: Resultado.eliminado),
       body: Center(
         child: GridView.count(
           shrinkWrap: true,
-          crossAxisCount: getAxisCount(),
+          crossAxisCount: GameSettings.gameBoardAxisCount(gamePlay.nivel),
           mainAxisSpacing: 15,
           crossAxisSpacing: 15,
           padding: const EdgeInsets.all(24),
           children: List.generate(
-            nivel,
+            gamePlay.nivel,
             (index) => CardGame(
-              modo: modo,
+              modo: gamePlay.modo,
               opcao: Random().nextInt(14),
             ),
           ),

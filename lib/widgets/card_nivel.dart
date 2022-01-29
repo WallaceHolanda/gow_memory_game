@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:gow_memory_game/models/game_play.dart';
 import 'package:gow_memory_game/pages/game_page.dart';
 import 'package:gow_memory_game/theme.dart';
 import '../constantes.dart';
 
 class CardNivel extends StatelessWidget {
-  final Modo modo;
-  final int nivel;
+  final GamePlay gamePlay;
 
-  const CardNivel({Key? key, required this.modo, required this.nivel})
-      : super(key: key);
+  const CardNivel({Key? key, required this.gamePlay}) : super(key: key);
+
+  startGame(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => GamePage(gamePlay: gamePlay),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              fullscreenDialog: true,
-              builder: (BuildContext context) =>
-                  GamePage(modo: modo, nivel: nivel),
-            )),
-      },
+      onTap: () => startGame(context),
       borderRadius: const BorderRadius.all(Radius.circular(10)),
       child: Container(
         width: 90,
@@ -29,16 +29,18 @@ class CardNivel extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           border: Border.all(
-            color: modo == Modo.mortal ? Colors.white : GodOfWarTheme.color,
+            color: gamePlay.modo == Modo.mortal
+                ? Colors.white
+                : GodOfWarTheme.color,
           ),
           borderRadius: const BorderRadius.all(Radius.circular(10)),
-          color: modo == Modo.mortal
+          color: gamePlay.modo == Modo.mortal
               ? Colors.transparent
               : GodOfWarTheme.color.withOpacity(.6),
         ),
         child: Center(
           child: Text(
-            nivel.toString(),
+            gamePlay.nivel.toString(),
             style: const TextStyle(fontSize: 30),
           ),
         ),
