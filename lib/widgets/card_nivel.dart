@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gow_memory_game/controllers/game_controller.dart';
 import 'package:gow_memory_game/models/game_play.dart';
 import 'package:gow_memory_game/pages/game_page.dart';
 import 'package:gow_memory_game/theme.dart';
+import 'package:provider/src/provider.dart';
 import '../constantes.dart';
 
 class CardNivel extends StatelessWidget {
@@ -10,6 +12,8 @@ class CardNivel extends StatelessWidget {
   const CardNivel({Key? key, required this.gamePlay}) : super(key: key);
 
   startGame(BuildContext context) {
+    // Iniciando o jogo antes de ir para a tela
+    context.read<GameController>().startGame(gamePlay: gamePlay);
     Navigator.push(
       context,
       MaterialPageRoute(

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gow_memory_game/constantes.dart';
+import 'package:gow_memory_game/controllers/game_controller.dart';
+import 'package:provider/provider.dart';
 
 class GameScore extends StatelessWidget {
   final Modo modo;
@@ -7,6 +10,8 @@ class GameScore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<GameController>(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -17,7 +22,9 @@ class GameScore extends StatelessWidget {
                 ? Icons.my_location
                 : Icons.touch_app_rounded),
             const SizedBox(width: 10),
-            const Text('18', style: TextStyle(fontSize: 25)),
+            Observer(
+                builder: (_) => Text(controller.score.toString(),
+                    style: const TextStyle(fontSize: 25))),
           ],
         ),
         Image.asset('images/logo.png', width: 60, height: 45),

@@ -3,16 +3,17 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:gow_memory_game/constantes.dart';
+import 'package:gow_memory_game/models/game_opcao.dart';
 import 'package:gow_memory_game/theme.dart';
 
 class CardGame extends StatefulWidget {
   final Modo modo;
-  final int opcao;
+  final GameOpcao gameOpcao;
 
   const CardGame({
     Key? key,
     required this.modo,
-    required this.opcao,
+    required this.gameOpcao,
   }) : super(key: key);
 
   @override
@@ -48,8 +49,8 @@ class _CardGameState extends State<CardGame>
   // Caso a carta tenha atingido 90 graus, a imagem aparecerá
   AssetImage getImage(double angulo) {
     if (angulo > 0.5 * pi || angulo == 0.2 * pi) {
-      return const AssetImage(
-          'images/atreus.png'); // Substituir por ${widget.opcao.toString()}
+      return AssetImage(
+          'images/${widget.gameOpcao.opcao.toString()}.png'); // Substituir por atreus.png
     } else {
       return widget.modo == Modo.mortal
           ? const AssetImage('images/cardMortal.png')
