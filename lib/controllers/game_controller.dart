@@ -58,5 +58,43 @@ abstract class GameControllerBase with Store {
         .map(
             (opcao) => GameOpcao(opcao: opcao, matched: false, selected: false))
         .toList();
+    gameCards.shuffle();
+  }
+
+  escolher(GameOpcao opcao, Function resetCard) async {
+    opcao.selected = true;
+    _escolha.add(opcao);
+    _escolhaCallback.add(resetCard);
+    await _compararEscolhas();
+  }
+
+  _compararEscolhas() async {
+    if (jogadaCompleta) {
+      if (_escolha[0].opcao == _escolha[1].opcao) {
+        _acertos++;
+        _escolha[0].matched = true;
+        _escolha[1].matched = true;
+      } else {
+        await Future.delayed(const Duration(seconds: 1), () {
+          for (var i in [0, 1]) {
+            _escolha[i].selected = false;
+            _escolhaCallback[i]();
+          }
+        });
+      }
+
+      _resetJogada();
+      _updateScore();
+      //_checkGameResult();
+    }
+  }
+
+  _resetJogada() {
+    _escolha = [];
+    _escolhaCallback = [];
+  }
+
+  _updateScore() {
+    _gamePlay.modo == Modo.mortal ? score++ : score--;
   }
 }

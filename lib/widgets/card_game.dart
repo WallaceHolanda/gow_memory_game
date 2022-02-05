@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:gow_memory_game/constantes.dart';
 import 'package:gow_memory_game/models/game_opcao.dart';
 import 'package:gow_memory_game/theme.dart';
+import 'package:provider/provider.dart';
+
+import '../controllers/game_controller.dart';
 
 class CardGame extends StatefulWidget {
   final Modo modo;
@@ -40,10 +43,23 @@ class _CardGameState extends State<CardGame>
   }
 
   flipCard() {
-    if (!animation.isAnimating) {
+    final game = context.read<GameController>();
+
+    bool cartaSemMatch = !widget.gameOpcao.matched;
+    bool cartaNaoSelecionada = !widget.gameOpcao.selected;
+    bool jogadaIncompleta = !game.jogadaCompleta;
+
+    if (!animation.isAnimating &&
+        cartaSemMatch &&
+        cartaNaoSelecionada &&
+        jogadaIncompleta) {
       animation.forward(); //Faz com que a carta 'vire'
-      Timer(const Duration(seconds: 2), () => animation.reverse());
+      game.escolher(widget.gameOpcao, resetCard);
     }
+  }
+
+  resetCard() {
+    animation.reverse();
   }
 
   // Caso a carta tenha atingido 90 graus, a imagem aparecerá
