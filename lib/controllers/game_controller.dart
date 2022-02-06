@@ -85,8 +85,37 @@ abstract class GameControllerBase with Store {
 
       _resetJogada();
       _updateScore();
-      //_checkGameResult();
+      _checkGameResult();
     }
+  }
+
+  _checkGameResult() async {
+    bool allMatched = _acertos == _numPares;
+    if (_gamePlay.modo == Modo.mortal) {
+      await _checkResultModoMortal(allMatched);
+    } else {
+      await _checkResultModoGodOfWar(allMatched);
+    }
+  }
+
+  _checkResultModoMortal(bool allMatched) async {
+    await Future.delayed(const Duration(seconds: 1), () => venceu = allMatched);
+  }
+
+  _checkResultModoGodOfWar(bool allMatched) async {
+    if (_chancesAcabaram()) {
+      await Future.delayed(
+          const Duration(milliseconds: 500), () => perdeu = true);
+    }
+
+    if (allMatched && score >= 0) {
+      await Future.delayed(
+          const Duration(seconds: 1), () => venceu = allMatched);
+    }
+  }
+
+  _chancesAcabaram() {
+    return score < _numPares - _acertos;
   }
 
   _resetJogada() {
@@ -96,5 +125,19 @@ abstract class GameControllerBase with Store {
 
   _updateScore() {
     _gamePlay.modo == Modo.mortal ? score++ : score--;
+  }
+
+  restartGame() {
+    startGame(gamePlay: _gamePlay);
+  }
+
+  nextLevel() {
+    int nivelIndex = 0;
+    if (_gamePlay.nivel != GameSettings.niveis.last) {
+      nivelIndex = GameSettings.niveis.indexOf(_gamePlay.nivel) + 1;
+    }
+
+    _gamePlay.nivel = GameSettings.niveis[nivelIndex];
+    startGame(gamePlay: _gamePlay);
   }
 }
