@@ -1,4 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-com/example/gow_memory_game/BuildConfig.java
- com.example.gow_memory_game.BuildConfig
