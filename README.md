@@ -1,4 +1,4 @@
-<h1 align="center">God of War - Jogo da Memória (Ω)</h1>
+<h1 align="center">God of War - Memory Game (Ω)</h1>
 <p align="center">
   <img alt="Languages" src="https://img.shields.io/github/languages/count/WallaceHolanda/gow_memory_game?color=%235963C5" />
   <img alt="lastcommit" src="https://img.shields.io/github/last-commit/WallaceHolanda/gow_memory_game?color=%235761C3" />
@@ -31,13 +31,13 @@ The project was based on the video playlist by [Prof. Diego Antunes](https://cut
 ## :computer: How to Run
 
 ```bash
-# Clone Repositorio
+# Clone the Repository
 $ git clone https://github.com/WallaceHolanda/gow_memory_game.git
 
-# Instale as dependências
+# Install dependencies
 $ flutter pub get
 
-# Rode a aplicação
+# Run App
 $ flutter run
 ```
 
