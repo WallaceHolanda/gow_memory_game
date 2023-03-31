@@ -6,24 +6,21 @@
   <img alt="Issues" src="https://img.shields.io/github/issues/WallaceHolanda/gow_memory_game?color=%235965E0">
 </p>
 
+## :iphone:  About the Project
 
-# :iphone: Sobre o Projeto
+This project involves the development of a themed Memory Game with characters from God of War.
 
-<p>
-  Este projeto envolve o desenvolvimento de Jogo da Memória temático com personagens do God of War
-  
-  O projeto foi baseado na playlist de vídeos do [Prof. Diego Antunes](https://cutt.ly/j2chk8X)
-</p>
+The project was based on the video playlist by [Prof. Diego Antunes](https://cutt.ly/j2chk8X).
 
-# :camera: Screenshots
+## :camera: Screenshots
+
 <div align="center">
-   <img src="readme/imagem_1.png" width="250"/>
-   <img src="readme/imagem_2.png" width="250"/>
-   <img src="readme/Imagem_3.png" width="250"/>
+  <img src="readme/imagem_1.png" width="250"/>
+  <img src="readme/imagem_2.png" width="250"/>
+  <img src="readme/Imagem_3.png" width="250"/>
 </div>
 
-
-# :rocket: Tecnologias
+## :rocket:  Technologies
 
 - [Flutter](https://flutter.dev/)
 - [Dart](https://pub.dev/)
@@ -31,8 +28,7 @@
 - [Google Fonts](https://pub.dev/packages/google_fonts)
 - [Github](https://github.com)
 
-
-# :computer: Como rodar
+## :computer: How to Run
 
 ```bash
 # Clone Repositorio
@@ -45,9 +41,8 @@ $ flutter pub get
 $ flutter run
 ```
 
+## :page_facing_up: Licence
 
-# :page_facing_up: Licença
+This project is under the [MIT License](./LICENSE)
 
-Este projeto está sob a [MIT License](./LICENSE)
-
-Feito por Wallace Holanda
+Made by Wallace Holanda.
